@@ -2,8 +2,46 @@ import React from 'react';
 import './Mainpage.css';
 import Frame from '../Frame/Frame';
 import userimage from "../../assets/user-image.png";
-
+import { useEffect, useState } from 'react';
 const Mainpage = () => {
+
+  const [nullifierHash, setNullifierHash] = useState("");
+
+    useEffect(() => {
+        const fetchFileContent = async () => {
+            try {
+                const response = await fetch("/public/tempStorage/storage.txt"); // Adjust the path if necessary
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const text = await response.text();
+                setNullifierHash(text); // Set the content to state
+            } catch (error) {
+                console.error("Error fetching file:", error);
+            }
+        };
+
+        fetchFileContent();
+    }, []); 
+
+    // Utility function to format the hash
+    const formatHash = (hash) => {
+      if (hash.length > 4) {
+          return `${hash.slice(0, 4)}...${hash.slice(-2)}`; // Shorten the hash
+      }
+      return hash; // Return as is if it's too short
+  };
+
+
+  // fs.readFile(filePath, 'utf8', (err, data) => {
+  //   if (err) {
+  //     console.error('Error reading file:', err);
+  //     return;
+  //   }
+  //   console.log('File content:', data);
+  //   nullifierHash = data;
+  // });
+
   return (
       <div className="mainpage-container">
         <div className="mainpage-user-profile-card">
@@ -14,6 +52,7 @@ const Mainpage = () => {
             <div className="mainpage-user-details">
               <h2>John Doe</h2>
               <p>WorldID: JD123456</p>
+              <p>Hash: {formatHash(nullifierHash)}</p>
             </div>
           </div>
           <div className="mainpage-balance-card">

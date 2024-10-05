@@ -11,4 +11,4 @@ Currently, two official plugins are available:
 
 Code to be run:
 1. npm install
-2. 
+2. npm install @worldcoin/idkit

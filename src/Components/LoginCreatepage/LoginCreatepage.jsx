@@ -2,6 +2,7 @@ import React from 'react';
 import Lottie from 'lottie-react';
 import animationData from '../../assets/worldanimation.json';
 import batterylogo from '../../assets/battery.png'
+import WorldcoinWidget from './WorldcoinWidget';
 import './LoginCreatePage.css';
 
 const LoginCreatePage = () => {
@@ -25,7 +26,8 @@ const LoginCreatePage = () => {
           
           <div className="button-container">
             <button className="login-button">Create Account</button>
-            <button className="login-button">Login with Existing Account</button>
+            <WorldcoinWidget />
+            {/* <button className="login-button">Login with Existing Account</button> */}
           </div>
         </div>
       </div>
