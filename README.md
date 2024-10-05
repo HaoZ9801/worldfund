@@ -10,5 +10,6 @@ Currently, two official plugins are available:
 
 
 Code to be run:
-1. npm install
-2. 
+1. npm install 
+2. npm install lottie-react
+3. npm install react-router-dom
