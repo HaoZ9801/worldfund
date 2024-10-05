@@ -14,3 +14,6 @@ Code to be run:
 2. npm install @worldcoin/idkit
 3. npm install lottie-react
 4. npm install react-router-dom
+5. npm install web3
+6. npm install ethers
+7. node server.js
