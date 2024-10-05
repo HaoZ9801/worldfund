@@ -1,0 +1,93 @@
+.voting-list {
+    padding: 20px; /* Padding around the outer container */
+    font-family: Arial, sans-serif; /* Font style */
+    height: 100%; /* Ensure it takes the full height of the parent */
+}
+
+.vote-list-container {
+    margin-top: -20px;
+    height: 520px;
+    width: 300px; 
+    overflow: hidden; /* Hide the scrollbar */
+    position: relative; /* Establish a positioning context */
+    margin-bottom: 17px;
+}
+
+.scrollable-content {
+    height: 100%; /* Fill the container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 10px; /* Add padding for inner content */
+    border-radius: 10px; /* Optional: Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Shadow for aesthetics */
+}
+
+.scrollable-content::-webkit-scrollbar {
+    display: none; /* Hide the scrollbar */
+}
+
+.vote-list-title h1{
+    font-size: 25px;
+    text-align: center;
+}
+
+.vote-about-bar {
+    display: flex; /* Align tabs horizontally */
+    gap:90px;
+    margin: 20px 0; /* Space around the bar */
+    justify-content: center;
+}
+
+.vote-tab {
+    cursor: pointer; /* Pointer cursor on hover */
+    color: gray; /* Default color */
+    font-weight: normal; /* Regular font weight */
+    position: relative; /* To position the underline */
+    font-size: 15px;
+    margin-left: 5px;
+}
+
+.vote-tab.active {
+    color: rgb(94, 94, 94); /* Active tab color */
+    font-weight: bold; /* Make active tab bold */
+}
+
+.vote-underline {
+    position: absolute; /* Position underline */
+    width: 130px; /* Full width of the tab */
+    height: 2px; /* Height of the underline */
+    background-color: rgb(94, 94, 94); /* Underline color */
+    bottom: -5px; /* Positioning below the text */
+    left: -30px; /* Align to the left */
+}
+
+/* Add styles for about-content and milestone-content if needed */
+.vote-about-content,
+.vote-history-content {
+     margin-left: 5px;
+     margin-right: 5px;
+     
+}
+
+.vote-about-content{
+    font-size: 15px;
+    text-align: justify;
+}
+
+.vote-history-content {
+    font-size: 10px;
+    margin-top: 10px;
+    padding: 0px;
+    
+  }
+  
+  .vote-history-content ul {
+    list-style-type: disc; /* Disc style for bullet points */
+    padding-left: 20px; /* Indent the list */
+  }
+  
+  .vote-history-content li {
+    margin-bottom: 10px; /* Space between list items */
+    font-size: 16px; /* Font size for the list items */
+    line-height: 1.5; /* Spacing between lines */
+    color: #333; /* Dark color for readability */
+  }

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./VoteDetails.css";
 import back_button from "../../assets/back.png";
 import mercy from "../../assets/mercy.jpg"; // Correctly import mercy image
@@ -7,13 +8,23 @@ import mercy_logo from "../../assets/mercy-logo.png"; // Correctly import mercy 
 const VoteDetails = () => {
   const [selectedTab, setSelectedTab] = useState("about");
 
+  const navigate = useNavigate(); // Initialize navigate
+
+  const handleBackButtonClick = () => {
+    navigate("/VoteList"); // Navigate to /VoteList on click
+  };
   
   return (
-    <div className="donation-details">
+    <div className="vote-details">
       <div className="details-container">
         <div className="scrollable-content">
           <div className="vote-top-title">
-            <img src={back_button} alt="back" />
+            <img 
+                src={back_button} 
+                alt="back" 
+                onClick={handleBackButtonClick} // Set onClick handler
+                style={{ cursor: 'pointer' }} // Change cursor to pointer
+                />
             <h1>Vote Project</h1>
           </div>
 
