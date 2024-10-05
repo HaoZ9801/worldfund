@@ -26,13 +26,23 @@
 }
 
 .vote-list-title h1{
-    font-size: 25px;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+    text-transform: uppercase;
+    font-size: calc(1rem + min(10px));
+    font-weight: 800;
+    letter-spacing: -.175ch;
+    line-height: 0.9;
+    color: white;
+    -webkit-text-stroke: 2px black;
+    text-shadow: 2px 2px black;
 }
 
 .vote-about-bar {
     display: flex; /* Align tabs horizontally */
-    gap:90px;
+    
     margin: 20px 0; /* Space around the bar */
     justify-content: center;
 }
@@ -44,6 +54,7 @@
     position: relative; /* To position the underline */
     font-size: 15px;
     margin-left: 5px;
+    
 }
 
 .vote-tab.active {
@@ -68,10 +79,86 @@
      
 }
 
-.vote-about-content{
-    font-size: 15px;
-    text-align: justify;
+.vote-about-content {
+    font-size: 15px; /* Font size for the content */
+    text-align: justify; /* Align text */
+    
 }
+
+.vote-about-content ul {
+    list-style-type: none; /* Remove default bullet points */
+    padding: 0; /* Remove padding */
+    
+}
+
+.vote-item {
+    display: flex; /* Align items in a row */
+    align-items: center; /* Center items vertically */
+    margin-bottom: 20px;
+}
+
+.rank {
+    font-weight: bold; /* Make the rank bold */
+    margin-right: 10px; /* Space between rank and box */
+}
+
+.vote-box {
+    background-color: #fafafa; /* Background color for the box */
+    border-radius: 20px; /* Rounded corners */
+    border: 2px solid black;
+    padding: 10px 15px; /* Padding inside the box */
+    display: flex; /* Align text inside the box */
+    justify-content: space-between; /* Space between name and number */
+    width: 100%; /* Full width */
+}
+
+.name {
+    font-weight: normal; /* Regular font weight for name */
+}
+
+.number {
+    font-weight: bold; /* Make the number bold */
+    color: #333; /* Dark color for better visibility */
+}
+
+.vote-item1 {
+    display: flex; /* Align items in a row */
+    align-items: center; /* Center items vertically */
+    margin-bottom: 20px;
+}
+
+.rank1 {
+    font-weight: bold; /* Make the rank bold */
+    margin-right: 10px; /* Space between rank and box */
+}
+
+.vote-box1 {
+    background-color: #C0EBA6   ; /* Background color for the box */
+    border-radius: 20px; /* Rounded corners */
+    border: 2px solid black;
+    padding: 10px 15px;
+    display: flex; /* Align text inside the box */
+    justify-content: space-between; /* Space between name and number */
+    width: 100%; /* Full width */
+}
+
+
+.number1 {
+    font-weight: bold; /* Make the number bold */
+    color: #347928; /* Dark color for better visibility */
+}
+
+.overlay1 {
+    background-color: #ffc7c7; /* Background color for the box */
+    border-radius: 20px 0px 0px 20px;  /* Rounded corners */
+    
+   height: 100%;
+    display: flex; /* Align text inside the box */
+    justify-content: space-between; /* Space between name and number */
+    width: 80%; /* Full width */
+}
+
+
 
 .vote-history-content {
     font-size: 10px;
@@ -79,15 +166,30 @@
     padding: 0px;
     
   }
+
+  .history-title {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr 1fr;
+    font-weight: bold;
+    background-color: #000000;
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.history-item {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr 1fr;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    font-size: 16px;
   
-  .vote-history-content ul {
-    list-style-type: disc; /* Disc style for bullet points */
-    padding-left: 20px; /* Indent the list */
-  }
+}
+
+
+ 
   
-  .vote-history-content li {
-    margin-bottom: 10px; /* Space between list items */
-    font-size: 16px; /* Font size for the list items */
-    line-height: 1.5; /* Spacing between lines */
-    color: #333; /* Dark color for readability */
-  }
+
+ 

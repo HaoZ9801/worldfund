@@ -5,6 +5,7 @@ import DonationDetails from "./Components/DonationDetails/DonationDetails"; // I
 import Mainpage from "./Components/Mainpage/Mainpage"; // Import the Mainpage component
 import LoginCreatePage from "./Components/LoginCreatepage/LoginCreatepage";
 import VoteList from "./Components/VoteList/VoteList";
+import VoteDetails from "./Components/VoteDetails/VoteDetails";
 
 const App = () => {
   return (
@@ -22,9 +23,7 @@ const App = () => {
           <Route path="/VoteDetails" element={<Frame content={<VoteDetails />} />} />
           <Route path="/VoteList" element={<Frame content={<VoteList />} />} />
 
-          {/* Route for the LoginCreatePage */}
-          <Route path="/logincreatepage" element={<LoginCreatePage />} />
-
+          
 
         </Routes>
       </div>

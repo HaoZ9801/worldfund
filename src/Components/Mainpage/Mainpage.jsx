@@ -10,6 +10,10 @@ const Mainpage = () => {
     navigate('/donation-details'); // Navigate to the donation details page
   };
 
+  const handleVotingClick = () => {
+    navigate('/VoteDetails'); // Navigate to the donation details page
+  };
+
   return (
       <div className="mainpage-container">
         <div className="mainpage-user-profile-card">
@@ -34,7 +38,7 @@ const Mainpage = () => {
           >
             Donation
           </button>
-          <button className="mainpage-action-button mainpage-voting">
+          <button className="mainpage-action-button mainpage-voting" onClick={handleVotingClick}>
             Voting
           </button>
         </div>
