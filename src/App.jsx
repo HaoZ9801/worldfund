@@ -11,7 +11,7 @@ const App = () => {
       <div className="App">
         <Routes>
           {/* Route for the home page */}
-          <Route path="/" element={<Frame content={<h2>Welcome to the Mobile Frame!</h2>} />} />
+          <Route path="/" element={<LoginCreatePage />} />
           
           {/* Route for the Mainpage */}
           <Route path="/mainpage" element={<Frame content={<Mainpage />} />} />

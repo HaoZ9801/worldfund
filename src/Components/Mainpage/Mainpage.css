@@ -1,11 +1,11 @@
-.main-container {
+.mainpage-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
-  }
+}
   
-  .user-profile-card {
+.mainpage-user-profile-card {
     background-color: #f8f8f8;
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -13,66 +13,66 @@
     width: 100%;
     max-width: 400px;
     margin-bottom: 50px;
-  }
+}
   
-  .user-info {
+.mainpage-user-info {
     display: flex;
     align-items: center;
     margin-bottom: 15px;
-  }
+}
   
-  .user-image {
+.mainpage-user-image {
     width: 60px;
     height: 60px;
     border-radius: 50%;
     overflow: hidden;
     margin-right: 15px;
-  }
+}
   
-  .user-image img {
+.mainpage-user-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
+}
   
-  .user-details h2 {
+.mainpage-user-details h2 {
     margin: 0;
     font-size: 1.2rem;
-  }
+}
   
-  .user-details p {
+.mainpage-user-details p {
     margin: 5px 0 0;
     font-size: 0.9rem;
     color: #666;
-  }
+}
   
-  .balance-card {
+.mainpage-balance-card {
     background-color: #eff5f7;
     border-radius: 8px;
     padding: 10px;
     text-align: center;
-  }
+}
   
-  .balance-card p {
+.mainpage-balance-card p {
     margin: 0;
     font-size: 0.9rem;
     color: #666;
-  }
+}
   
-  .balance-card h3 {
+.mainpage-balance-card h3 {
     margin: 5px 0 0;
     font-size: 1.5rem;
     color: #0056b3;
-  }
+}
   
-  .button-container {
+.mainpage-button-container {
     display: flex;
     flex-direction: column;
     width: 100%;
     max-width: 400px;
-  }
+}
   
-  .action-button {
+.mainpage-action-button {
     background-color: white;
     color: black;
     padding: 15px 20px;
@@ -82,24 +82,24 @@
     cursor: pointer;
     margin-bottom: 10px;
     transition: all 0.3s ease;
-  }
+}
   
-  .action-button:hover,
-  .action-button:active {
+.mainpage-action-button:hover,
+.mainpage-action-button:active {
     background-color: black;
     color: white;
-  }
+}
   
-  .action-button.donation,
-  .action-button.voting {
+.mainpage-action-button.mainpage-donation,
+.mainpage-action-button.mainpage-voting {
     background-color: white;
     color: black;
-  }
+}
   
-  .action-button.donation:hover,
-  .action-button.donation:active,
-  .action-button.voting:hover,
-  .action-button.voting:active {
+.mainpage-action-button.mainpage-donation:hover,
+.mainpage-action-button.mainpage-donation:active,
+.mainpage-action-button.mainpage-voting:hover,
+.mainpage-action-button.mainpage-voting:active {
     background-color: black;
     color: white;
-  }
+}
