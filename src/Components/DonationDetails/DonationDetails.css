@@ -8,10 +8,11 @@
 
 .details-container {
     margin-top: -20px;
-    height: 540px;
+    height: 520px;
     width: 300px; 
     overflow: hidden; /* Hide the scrollbar */
     position: relative; /* Establish a positioning context */
+    margin-bottom: 17px;
 }
 
 .scrollable-content {
@@ -52,13 +53,14 @@
 .who-pics {
     width: 100%; /* Make it responsive */
     height: auto; /* Maintain aspect ratio */
-    border-radius: 10px; /* Optional: rounded corners */
+    border-radius: 5px; /* Optional: rounded corners */
+    margin-top: -20px;
 }
 
 .who-pics img {
     width: 100%; /* Set to fill the container */
     height: auto; /* Maintain aspect ratio */
-    border-radius: 10px; /* Optional: rounded corners */
+    border-radius: 5px; /* Optional: rounded corners */
 }
 
 .who-logo {
@@ -70,6 +72,7 @@
     border: 5px solid white; /* White border */
     border-radius: 50%; /* Circular border */
     overflow: hidden; /* Ensure child elements stay within bounds */
+    margin-top: 50px;
 }
 
 .who-logo img {
@@ -77,3 +80,205 @@
     height: 100%; /* Ensure logo image is contained */
     object-fit: cover; /* Maintain aspect ratio while covering */
 }
+
+.who-name h1{
+    font-size: 17px;
+    margin-top: 25px;
+}
+
+.donate-box {
+    background-color: #f6f6f6; /* Light background for contrast */
+    border-radius: 15px; /* Rounded corners */
+    height: 130px;
+     /* Space above the donate box */
+   
+}
+
+
+.donate-info {
+    display: flex; /* Use flexbox for horizontal alignment */
+    justify-content: space-between; /* Space between elements */
+    padding: 15px;
+}
+
+.info-font {
+    display: flex; /* Use flexbox for horizontal layout */
+    flex-direction: column; /* Stack label and value */
+    align-items: center; /* Center align items */
+    font-weight: bold; /* Make font bold */
+    font-size: 14px; /* Optional: Adjust font size */
+}
+
+
+.divider {
+    border: none; /* Remove default border */
+    border-top: 3px solid #ffffff; /* Blue line divider */
+    margin: 10px 0; /* Space above and below the divider */
+    
+}
+
+.donate-button {
+    background-color: #000000; /* Button background color */
+    color: rgb(255, 255, 255); /* Text color */
+    border: none; /* No border */
+    border-radius: 0 0 15px 15px; /* Rounded corners for button */
+    padding: 10px 20px; /* Padding for button */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size */
+    transition: background-color 0.1s; /* Transition for hover effect */
+    width: 100%;
+    margin-top: -50px;
+    
+}
+
+.donate-button:hover {
+    background-color: #f6f6f6; /* Darker blue on hover */
+    color: rgb(0, 0, 0);
+    border: 3px solid #000000 ;
+}
+
+.donate-about-bar {
+    display: flex; /* Align tabs horizontally */
+    gap: 10px;
+    margin: 20px 0; /* Space around the bar */
+}
+
+.tab {
+    cursor: pointer; /* Pointer cursor on hover */
+    color: gray; /* Default color */
+    font-weight: normal; /* Regular font weight */
+    position: relative; /* To position the underline */
+    font-size: 15px;
+    margin-left: 15px;
+}
+
+.tab.active {
+    color: rgb(94, 94, 94); /* Active tab color */
+    font-weight: bold; /* Make active tab bold */
+}
+
+.underline {
+    position: absolute; /* Position underline */
+    width: 100%; /* Full width of the tab */
+    height: 2px; /* Height of the underline */
+    background-color: rgb(94, 94, 94); /* Underline color */
+    bottom: -5px; /* Positioning below the text */
+    left: 0; /* Align to the left */
+}
+
+/* Add styles for about-content and transaction-content if needed */
+.about-content,
+.transaction-content {
+     margin-left: 15px;
+     text-align: justify;
+     margin-right: 15px;
+     font-size: 15px;
+}
+
+.transaction-content {
+    width: 100%;
+    margin-left: -1px;
+    box-sizing: border-box;
+}
+
+.transaction-title {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr 1fr;
+    font-weight: bold;
+    background-color: #686D76;
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.transaction-item {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr 1fr;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.item-date, .item-details,  .item-amount {
+    text-align: left;
+    padding: 5px 10px;
+}
+
+.title-date {
+    margin-left: 3%;
+}
+
+.title-amount {
+    margin-left: 60%;
+}
+
+.title-details{
+    margin-left: 55%;
+}
+
+.item-amount{
+    margin-left: 20%;
+}
+
+.donation-form {
+    display: flex;
+    flex-direction: column;
+    
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px; /* Add margin to avoid overlap */
+  }
+  
+  label {
+    font-weight: bold;
+    margin-bottom: 2px;
+  }
+  
+  select {
+    padding: 10px;
+    font-size: 13px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%; /* Ensure input fields take up full width */
+    
+}
+
+input {
+    padding: 10px;
+    font-size: 13px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 90%; /* Ensure input fields take up full width */
+    
+}
+  
+  .donate-button {
+    background-color: #000;
+    color: white;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    width: 100%; /* Make the button full-width */
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+  
+  .donate-button:hover {
+    background-color: #444;
+    color: white;
+  }
+
+  .make-donation{
+    background-color: #EEEEEE;
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 20px;
+  }
+  
