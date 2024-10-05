@@ -164,30 +164,33 @@
     font-size: 10px;
     margin-top: 10px;
     padding: 0px;
-    
-  }
+}
 
-  .history-title {
+.history-title {
     display: grid;
-    grid-template-columns: 1fr 2fr 2fr 1fr;
+    grid-template-columns: 1fr 2fr; /* Adjusted to match only the number of columns needed */
     font-weight: bold;
-    background-color: #000000;
+    background-color: #000;
     color: #fff;
     border-radius: 10px;
     padding: 10px;
     margin-bottom: 10px;
-    font-size: 16px;
+    font-size: 15px;
 }
 
 .history-item {
     display: grid;
-    grid-template-columns: 1fr 2fr 2fr 1fr;
+    grid-template-columns: 1fr 2fr; /* Adjusted to match only the number of columns needed */
     border-bottom: 1px solid #ddd;
     padding: 10px 0;
-    font-size: 16px;
-  
+    font-size: 14px;
 }
 
+.history-date, .history-details {
+    text-align: left;
+    padding: 5px 10px;
+    overflow-wrap: break-word; /* Ensure text breaks properly if it's too long */
+}
 
  
   
