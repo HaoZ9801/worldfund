@@ -1,0 +1,105 @@
+.mainpage-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+  
+.mainpage-user-profile-card {
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 50px;
+}
+  
+.mainpage-user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+  
+.mainpage-user-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 15px;
+}
+  
+.mainpage-user-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+  
+.mainpage-user-details h2 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+  
+.mainpage-user-details p {
+    margin: 5px 0 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+  
+.mainpage-balance-card {
+    background-color: #eff5f7;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+}
+  
+.mainpage-balance-card p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+  
+.mainpage-balance-card h3 {
+    margin: 5px 0 0;
+    font-size: 1.5rem;
+    color: #0056b3;
+}
+  
+.mainpage-button-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+}
+  
+.mainpage-action-button {
+    background-color: white;
+    color: black;
+    padding: 15px 20px;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+  
+.mainpage-action-button:hover,
+.mainpage-action-button:active {
+    background-color: black;
+    color: white;
+}
+  
+.mainpage-action-button.mainpage-donation,
+.mainpage-action-button.mainpage-voting {
+    background-color: white;
+    color: black;
+}
+  
+.mainpage-action-button.mainpage-donation:hover,
+.mainpage-action-button.mainpage-donation:active,
+.mainpage-action-button.mainpage-voting:hover,
+.mainpage-action-button.mainpage-voting:active {
+    background-color: black;
+    color: white;
+}
