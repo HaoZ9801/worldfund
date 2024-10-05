@@ -1,0 +1,64 @@
+/* Container for the mobile frame */
+.mobile-frame {
+    width: 300px;
+    height: 600px;
+    border: 16px solid black;
+    border-radius: 36px;
+    background-color: #fff;
+    position: relative;
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 50%;
+  }
+  
+  /* Header: top bar like on a phone */
+  .frame-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    padding: 0 15px;
+  }
+  
+  
+  
+  .time {
+    font-size: 14px;
+    font-weight: bold;
+    align-items: left;
+  }
+  
+  /* The screen area where content goes */
+  .frame-screen {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    padding: 20px;
+  }
+  
+  /* Footer: home button at the bottom */
+  .frame-footer {
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+
+  
+  .button {
+    background-color: #008cba;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    font-size: 16px;
+  }
+  
