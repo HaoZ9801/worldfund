@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom"; // Import Link for navigation
 import "./Frame.css";
+import battery_icon from '../../assets/battery.png';
 
 const Frame = () => {
   return (
@@ -8,12 +9,12 @@ const Frame = () => {
       <div className="frame-header">
         
         <span className="time">12:30</span>
+        <img src={battery_icon} alt="Battery Icon" className="battery-icon" />
         
       </div>
 
       <div className="frame-screen">
-        <p>Welcome to the Mobile Frame!</p>
-        <Link to="/home" className="button">Go to Home</Link>
+        
       </div>
 
       <div className="frame-footer">
