@@ -30,10 +30,10 @@ body, html {
   }
   
   .battery-icon {
-    width: 24px; /* Set the width of the battery icon */
-    height: auto; /* Maintain aspect ratio */
-    margin-left: 8px; /* Optional: Space between time and battery icon */
-  }
+  width: 24px; /* Set the width of the battery icon */
+  height: auto; /* Maintain aspect ratio */
+  margin-left: 8px; /* Optional: Space between time and battery icon */
+}
   
   .time {
     font-size: 14px;
@@ -49,7 +49,7 @@ body, html {
     justify-content: center;
     align-items: center;
     font-size: 18px;
-    padding: 20px;
+    
   }
   
   /* Footer: home button at the bottom */

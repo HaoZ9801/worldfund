@@ -1,0 +1,38 @@
+/* src/Components/DonationDetails/DonationDetails.css */
+
+.donation-details {
+    padding: 20px; /* Padding around the outer container */
+    font-family: Arial, sans-serif; /* Font style */
+    height: 100%; /* Ensure it takes the full height of the parent */
+}
+
+.details-container {
+    margin-top: -10px;
+    height: 530px;
+    width: 300px; 
+    overflow: hidden; /* Hide the scrollbar */
+    position: relative; /* Establish a positioning context */
+}
+
+.scrollable-content {
+    height: 100%; /* Fill the container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 10px; /* Add padding for inner content */
+    background-color: #f9f9f9; /* Optional: Background color */
+    border-radius: 10px; /* Optional: Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Shadow for aesthetics */
+}
+
+/* Hide scrollbar styles for Webkit browsers */
+.scrollable-content::-webkit-scrollbar {
+    display: none; /* Hide the scrollbar */
+}
+
+h2 {
+    color: #007bff; /* Color for the heading */
+}
+
+ul {
+    list-style-type: disc; /* Style for the list */
+    padding-left: 20px; /* Indentation for list items */
+}
