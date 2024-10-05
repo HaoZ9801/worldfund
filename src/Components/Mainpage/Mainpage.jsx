@@ -15,7 +15,10 @@ const Mainpage = () => {
   };
 
   return (
+    <div className="main-page">
       <div className="mainpage-container">
+        
+                <div className="scrollable-content">
         <div className="mainpage-user-profile-card">
           <div className="mainpage-user-info">
             <div className="mainpage-user-image">
@@ -42,6 +45,8 @@ const Mainpage = () => {
             Voting
           </button>
         </div>
+      </div>
+      </div>
       </div>
   );
 };
