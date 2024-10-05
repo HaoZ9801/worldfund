@@ -7,11 +7,11 @@ const Mainpage = () => {
   const navigate = useNavigate(); // Initialize the navigate function
 
   const handleDonationClick = () => {
-    navigate('/donation-details'); // Navigate to the donation details page
+    navigate('/DonationList'); // Navigate to the donation details page
   };
 
   const handleVotingClick = () => {
-    navigate('/VoteDetails'); // Navigate to the donation details page
+    navigate('/VoteList'); // Navigate to the donation details page
   };
 
   return (
