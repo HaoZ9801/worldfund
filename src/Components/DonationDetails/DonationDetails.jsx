@@ -150,7 +150,20 @@ const DonationDetails = () => {
                 </div>
 
                 {/* Donate button */}
-                <button type="submit" className="donate-button">Donate</button>
+                <button type="submit" className="donate-button" onClick={async () => {
+  if (window.ethereum) {
+    try {
+      const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+      console.log('Connected accounts:', accounts);
+    } catch (error) {
+      console.error('User denied account access or error occurred:', error);
+    }
+  } else {
+    console.error('MetaMask is not installed');
+  }
+}}>
+  Donate
+</button>
               </form>
             </div>
 
