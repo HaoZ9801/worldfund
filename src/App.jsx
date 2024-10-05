@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // Use Routes instead of Switch
 import Frame from "./Components/Frame/Frame"; // Import the Frame component
 import DonationDetails from "./Components/DonationDetails/DonationDetails"; // Import the DonationDetails component
-import VoteDetails from "./Components/VoteDetails/VoteDetails"; // Import the DonationDetails component
 import Mainpage from "./Components/Mainpage/Mainpage"; // Import the Mainpage component
 import LoginCreatePage from "./Components/LoginCreatepage/LoginCreatepage";
 
@@ -19,11 +18,6 @@ const App = () => {
           
           {/* Route for the DonationDetails page */}
           <Route path="/donation-details" element={<Frame content={<DonationDetails />} />} />
-          <Route path="/VoteDetails" element={<Frame content={<VoteDetails />} />} />
-
-          {/* Route for the LoginCreatePage */}
-          <Route path="/logincreatepage" element={<LoginCreatePage />} />
-
 
         </Routes>
       </div>
