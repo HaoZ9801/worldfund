@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom"; // Import Link for navigation
 import "./Frame.css";
 import battery_icon from '../../assets/battery.png'; // Import the battery icon
+import Navbar from '../Navbar/Navbar'
 
 const Frame = ({ content }) => {
   return (
@@ -16,7 +17,7 @@ const Frame = ({ content }) => {
       </div>
 
       <div className="frame-footer">
-        <Link to="/" className="home-button">🏠</Link> {/* Update this link if needed */}
+         <Navbar/>{/* Update this link if needed */}
       </div>
     </div>
   );
