@@ -2,7 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom"; // Import Link for navigation
 import "./Frame.css";
 import battery_icon from '../../assets/battery.png'; // Import the battery icon
-import Navbar from '../Navbar/Navbar'
+import Navbar from '../Navbar/Navbar';
+
+
 
 const Frame = ({ content }) => {
   return (

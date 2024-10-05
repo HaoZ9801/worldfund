@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import "./DonationDetails.css";
 import back_button from "../../assets/back.png";
 import who from "../../assets/who.jpg";
@@ -7,6 +8,13 @@ import useMetaMask from "./MetaMask"; // Import your MetaMask functionality
 
 const DonationDetails = () => {
   const [selectedTab, setSelectedTab] = useState("about");
+  const navigate = useNavigate(); // Initialize navigate
+
+  const handleBackButtonClick = () => {
+    navigate("/DonationList"); // Navigate to /VoteList on click
+  };
+
+  // Ref for scrolling to the make-donation section
   const makeDonationRef = useRef(null);
   const { account, connectMetaMask, transferFunds } = useMetaMask(); // Destructure functions from MetaMask
   const [donationAmount, setDonationAmount] = useState(""); // State for donation amount
@@ -26,7 +34,10 @@ const DonationDetails = () => {
       <div className="details-container">
         <div className="scrollable-content">
           <div className="top-title">
-            <img src={back_button} alt="back" />
+            <img src={back_button} 
+                alt="back" 
+                onClick={handleBackButtonClick} 
+                style={{ cursor: 'pointer' }} />
             <h1>Donation</h1>
           </div>
           <div className="project-pics">

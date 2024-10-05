@@ -1,0 +1,198 @@
+.voting-list {
+    padding: 20px; /* Padding around the outer container */
+    font-family: Arial, sans-serif; /* Font style */
+    height: 100%; /* Ensure it takes the full height of the parent */
+}
+
+.vote-list-container {
+    margin-top: -20px;
+    height: 520px;
+    width: 300px; 
+    overflow: hidden; /* Hide the scrollbar */
+    position: relative; /* Establish a positioning context */
+    margin-bottom: 17px;
+}
+
+.scrollable-content {
+    height: 100%; /* Fill the container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 10px; /* Add padding for inner content */
+    border-radius: 10px; /* Optional: Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Shadow for aesthetics */
+}
+
+.scrollable-content::-webkit-scrollbar {
+    display: none; /* Hide the scrollbar */
+}
+
+.vote-list-title h1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+    text-transform: uppercase;
+    font-size: calc(1rem + min(10px));
+    font-weight: 800;
+    letter-spacing: -.175ch;
+    line-height: 0.9;
+    color: white;
+    -webkit-text-stroke: 2px black;
+    text-shadow: 2px 2px black;
+}
+
+.vote-about-bar {
+    display: flex; /* Align tabs horizontally */
+    
+    margin: 20px 0; /* Space around the bar */
+    justify-content: center;
+}
+
+.vote-tab {
+    cursor: pointer; /* Pointer cursor on hover */
+    color: gray; /* Default color */
+    font-weight: normal; /* Regular font weight */
+    position: relative; /* To position the underline */
+    font-size: 15px;
+    margin-left: 5px;
+    
+}
+
+.vote-tab.active {
+    color: rgb(94, 94, 94); /* Active tab color */
+    font-weight: bold; /* Make active tab bold */
+}
+
+.vote-underline {
+    position: absolute; /* Position underline */
+    width: 130px; /* Full width of the tab */
+    height: 2px; /* Height of the underline */
+    background-color: rgb(94, 94, 94); /* Underline color */
+    bottom: -5px; /* Positioning below the text */
+    left: -30px; /* Align to the left */
+}
+
+/* Add styles for about-content and milestone-content if needed */
+.vote-about-content,
+.vote-history-content {
+     margin-left: 5px;
+     margin-right: 5px;
+     
+}
+
+.vote-about-content {
+    font-size: 15px; /* Font size for the content */
+    text-align: justify; /* Align text */
+    
+}
+
+.vote-about-content ul {
+    list-style-type: none; /* Remove default bullet points */
+    padding: 0; /* Remove padding */
+    
+}
+
+.vote-item {
+    display: flex; /* Align items in a row */
+    align-items: center; /* Center items vertically */
+    margin-bottom: 20px;
+}
+
+.rank {
+    font-weight: bold; /* Make the rank bold */
+    margin-right: 10px; /* Space between rank and box */
+}
+
+.vote-box {
+    background-color: #fafafa; /* Background color for the box */
+    border-radius: 20px; /* Rounded corners */
+    border: 2px solid black;
+    padding: 10px 15px; /* Padding inside the box */
+    display: flex; /* Align text inside the box */
+    justify-content: space-between; /* Space between name and number */
+    width: 100%; /* Full width */
+}
+
+.name {
+    font-weight: normal; /* Regular font weight for name */
+}
+
+.number {
+    font-weight: bold; /* Make the number bold */
+    color: #333; /* Dark color for better visibility */
+}
+
+.vote-item1 {
+    display: flex; /* Align items in a row */
+    align-items: center; /* Center items vertically */
+    margin-bottom: 20px;
+}
+
+.rank1 {
+    font-weight: bold; /* Make the rank bold */
+    margin-right: 10px; /* Space between rank and box */
+}
+
+.vote-box1 {
+    background-color: #C0EBA6   ; /* Background color for the box */
+    border-radius: 20px; /* Rounded corners */
+    border: 2px solid black;
+    padding: 10px 15px;
+    display: flex; /* Align text inside the box */
+    justify-content: space-between; /* Space between name and number */
+    width: 100%; /* Full width */
+}
+
+
+.number1 {
+    font-weight: bold; /* Make the number bold */
+    color: #347928; /* Dark color for better visibility */
+}
+
+.overlay1 {
+    background-color: #ffc7c7; /* Background color for the box */
+    border-radius: 20px 0px 0px 20px;  /* Rounded corners */
+    
+   height: 100%;
+    display: flex; /* Align text inside the box */
+    justify-content: space-between; /* Space between name and number */
+    width: 80%; /* Full width */
+}
+
+
+
+.vote-history-content {
+    font-size: 10px;
+    margin-top: 10px;
+    padding: 0px;
+}
+
+.history-title {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Adjusted to match only the number of columns needed */
+    font-weight: bold;
+    background-color: #000;
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.history-item {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Adjusted to match only the number of columns needed */
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    font-size: 14px;
+}
+
+.history-date, .history-details {
+    text-align: left;
+    padding: 5px 10px;
+    overflow-wrap: break-word; /* Ensure text breaks properly if it's too long */
+}
+
+ 
+  
+
+ 
