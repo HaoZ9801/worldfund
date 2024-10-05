@@ -1,29 +1,27 @@
 import React from "react";
-import "./DonationDetails.css"; // Optional: Create a CSS file for styling
+import "./DonationDetails.css"; 
+import back_button from "../../assets/back.png";
+import who from "../../assets/WHO.png";
+import who_logo from "../../assets/who-logo.png";
+
 
 const DonationDetails = () => {
   return (
     <div className="donation-details">
       <div className="details-container">
         <div className="scrollable-content">
-          <h2>Donation Details</h2>
-          <p>
-            Thank you for considering a donation! Your contributions help us support various causes and make a difference in the community.
-          </p>
-          <h3>How to Donate</h3>
-          <p>
-            To make a donation, please follow these steps:
-          </p>
-          <ul>
-            <li>Choose the amount you would like to donate.</li>
-            <li>Select the cause you want to support.</li>
-            <li>Fill out the donation form.</li>
-            <li>Submit your donation securely.</li>
-          </ul>
-          <h3>Contact Us</h3>
-          <p>
-            If you have any questions, feel free to reach out to us at <a href="mailto:info@example.com">info@example.com</a>.
-          </p>
+          <div className="top-title">
+            <img src={back_button} alt='back'></img>
+            <h1>Donation</h1>
+          </div>
+          <div className="project-pics">
+            <div className="who-pics">
+                <img src={who} alt = 'who'></img>
+            </div>
+            <div className="who-logo">
+                <img src="{who_logo}"></img>
+            </div>
+          </div>
         </div>
       </div>
     </div>
