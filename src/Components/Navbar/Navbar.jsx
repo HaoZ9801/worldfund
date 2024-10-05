@@ -7,18 +7,18 @@ import person_icon from '../../assets/person.png';
 
 const Navbar = () => {
     return (
-      <nav className="app-navbar">
-        <Link to="" className="nav-item">
-          <img src={news_icon} alt="News" className="nav-icon" />
+      <nav className="app-navbar-unique">
+        <Link to="" className="nav-item-unique">
+          <img src={news_icon} alt="News" className="nav-icon-unique" />
         </Link>
-        <Link to="/mainpage" className="nav-item">
-          <img src={home_icon} alt="Home" className="nav-icon" />
+        <Link to="/mainpage" className="nav-item-unique">
+          <img src={home_icon} alt="Home" className="nav-icon-unique" />
         </Link>
-        <Link to="" className="nav-item">
-          <img src={person_icon} alt="Profile" className="nav-icon" />
+        <Link to="" className="nav-item-unique">
+          <img src={person_icon} alt="Profile" className="nav-icon-unique" />
         </Link>
       </nav>
     );
-  };
+};
 
 export default Navbar;

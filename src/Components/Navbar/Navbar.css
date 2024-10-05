@@ -1,23 +1,22 @@
-.app-navbar {
+.app-navbar-unique {
     display: flex;
     justify-content: space-around; /* Space out the icons evenly */
     background-color: #fff; /* Background color for the navbar */
     padding: 10px 0; /* Padding for the navbar */
     border-top: 1px solid #ccc; /* Optional: border on top */
     margin-bottom: 60px;
-  }
+}
   
-  .nav-item {
+.nav-item-unique {
     display: flex; /* Center the icon */
     justify-content: center;
     align-items: center;
     text-decoration: none; /* Remove underline from links */
     color: #000; /* Color for the links */
     margin: 0 30px; /* Increase horizontal margin to space out the icons */
-  }
+}
   
-  .nav-icon {
+.nav-icon-unique {
     width: 30px; /* Increase the width of the icons */
     height: 30px; /* Increase the height of the icons */
-  }
-  
+}
