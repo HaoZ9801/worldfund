@@ -1,9 +1,15 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 import './Mainpage.css';
-import Frame from '../Frame/Frame';
 import userimage from "../../assets/user-image.png";
 
 const Mainpage = () => {
+  const navigate = useNavigate(); // Initialize the navigate function
+
+  const handleDonationClick = () => {
+    navigate('/donation-details'); // Navigate to the donation details page
+  };
+
   return (
       <div className="mainpage-container">
         <div className="mainpage-user-profile-card">
@@ -22,8 +28,15 @@ const Mainpage = () => {
           </div>
         </div>
         <div className="mainpage-button-container">
-          <button className="mainpage-action-button mainpage-donation">Donation</button>
-          <button className="mainpage-action-button mainpage-voting">Voting</button>
+          <button 
+            className="mainpage-action-button mainpage-donation" 
+            onClick={handleDonationClick} // Add onClick event handler
+          >
+            Donation
+          </button>
+          <button className="mainpage-action-button mainpage-voting">
+            Voting
+          </button>
         </div>
       </div>
   );
