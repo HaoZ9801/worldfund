@@ -8,7 +8,7 @@ import person_icon from '../../assets/person.png'; // Import the person icon
 const Navbar = () => {
   return (
     <nav className="app-navbar">
-      <Link to="/news" className="nav-item">
+      <Link to="/VoteDetails" className="nav-item">
         <img src={news_icon} alt="News" className="nav-icon" />
       </Link>
       <Link to="/main" className="nav-item">
