@@ -55,11 +55,11 @@ const DonationDetails = () => {
             <div className="donate-box">
               <div className="fund-received">
                 <span className="info-font">Fund Received:</span>
-                <span>$1200.00</span>
+                <span className="info-font2">$1200.00</span>
               </div>
               <div className="number-of-donors">
                 <span className="info-font">No. of Donors:</span>
-                <span>37</span>
+                <span className="info-font2">37</span>
               </div>
               <button className="donate-button" onClick={handleScrollToDonate}>Donate</button>
             </div>

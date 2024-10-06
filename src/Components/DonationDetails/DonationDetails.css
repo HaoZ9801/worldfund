@@ -105,10 +105,17 @@
     display: flex; /* Use flexbox for horizontal layout */
     flex-direction: column; /* Stack label and value */
     align-items: center; /* Center align items */
-    font-weight: bold; /* Make font bold */
+    
     font-size: 14px; /* Optional: Adjust font size */
 }
 
+.info-font2{
+    display: flex; /* Use flexbox for horizontal layout */
+    flex-direction: column; /* Stack label and value */
+    align-items: center; /* Center align items */
+    font-weight: bold; /* Make font bold */
+    font-size: 18px; /* Optional: Adjust font size */
+}
 
 .divider {
     border: none; /* Remove default border */

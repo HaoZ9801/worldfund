@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 import './Mainpage.css';
-import userimage from "../../assets/user-image.png";
+import userimage from "../../assets/user-image.jpg";
 import { useEffect, useState } from 'react';
 const Mainpage = () => {
 
@@ -56,20 +56,25 @@ const Mainpage = () => {
       <div className="mainpage-container">
         
                 <div className="scrollable-content">
+        <div className='mainpage-background'></div>
         <div className="mainpage-user-profile-card">
-          <div className="mainpage-user-info">
-            <div className="mainpage-user-image">
-              <img src={userimage} alt="User" />
+          <div className="mainpage-user-image">
+                <img src={userimage} alt="User" />
+              </div>
+
+          <div className='mainpage-content-box'>
+            <div className="mainpage-user-info">
+              
+              <div className="mainpage-user-details">
+                <h2>John Doe</h2>
+                <p>WorldID: JD123456</p>
+                <p>Hash: {formatHash(nullifierHash)}</p>
+              </div>
             </div>
-            <div className="mainpage-user-details">
-              <h2>John Doe</h2>
-              <p>WorldID: JD123456</p>
-              <p>Hash: {formatHash(nullifierHash)}</p>
+            <div className="mainpage-balance-card">
+              <p>Balance</p>
+              <h3>100 WLD</h3>
             </div>
-          </div>
-          <div className="mainpage-balance-card">
-            <p>Balance</p>
-            <h3>100 WLD</h3>
           </div>
         </div>
         <div className="mainpage-button-container">
