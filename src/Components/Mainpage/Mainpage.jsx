@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 import './Mainpage.css';
 import userimage from "../../assets/user-image.jpg";
-import { useEffect, useState } from 'react';
+
 const Mainpage = () => {
   const [nullifierHash, setNullifierHash] = useState("");
   const navigate = useNavigate(); // Initialize the navigate function
@@ -41,57 +41,42 @@ const Mainpage = () => {
   };
 
   return (
-    <div className="main-page">
-      <div className="mainpage-container">
+    <div className="mp-main-page">
+      <div className="mp-mainpage-container">
         
-                <div className="scrollable-content">
-        <div className='mainpage-background'></div>
-        <div className="mainpage-user-profile-card">
-          <div className="mainpage-user-image">
+                <div className="mp-scrollable-content">
+        <div className='mp-mainpage-background'></div>
+        <div className="mp-mainpage-user-profile-card">
+          <div className="mp-mainpage-user-image">
                 <img src={userimage} alt="User" />
               </div>
 
-          <div className='mainpage-content-box'>
-            <div className="mainpage-user-info">
+          <div className='mp-mainpage-content-box'>
+            <div className="mp-mainpage-user-info">
               
-              <div className="mainpage-user-details">
+              <div className="mp-mainpage-user-details">
                 <h2>John Doe</h2>
                 <p>WorldID: JD123456</p>
                 <p>Hash: {formatHash(nullifierHash)}</p>
               </div>
             </div>
-            <div className="mainpage-balance-card">
+            <div className="mp-mainpage-balance-card">
               <p>Balance</p>
               <h3>100 WLD</h3>
             </div>
           </div>
         </div>
-        <div className="mainpage-button-container">
+        <div className="mp-mainpage-button-container">
           <button 
-            className="mainpage-action-button mainpage-donation" 
+            className="mp-mainpage-action-button mainpage-donation" 
             onClick={handleDonationClick} // Add onClick event handler
           >
             Donation
           </button>
-          <button className="mainpage-action-button mainpage-voting" onClick={handleVotingClick}>
+          <button className="mp-mainpage-action-button mainpage-voting" onClick={handleVotingClick}>
             Voting
           </button>
-            <div className="mp-mainpage-button-container">
-              <div className="mp-mainpage-card">
-                <button 
-                  className="mp-mainpage-action-button mp-mainpage-donation" 
-                  onClick={handleDonationClick}
-                >
-                  Donation
-                </button>
-                <button 
-                  className="mp-mainpage-action-button mp-mainpage-voting" 
-                  onClick={handleVotingClick}
-                >
-                  Voting
-                </button>
-              </div>
-            </div>
+            
           </div>
         </div>
       </div>
