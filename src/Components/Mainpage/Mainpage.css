@@ -1,11 +1,10 @@
-.main-page {
+.mp-main-page {
     padding: 20px; /* Padding around the outer container */
     font-family: Arial, sans-serif; /* Font style */
     height: 100%; /* Ensure it takes the full height of the parent */
 }
 
-
-.mainpage-container {
+.mp-mainpage-container {
     margin-top: -20px;
     height: 520px;
     width: 300px; 
@@ -14,7 +13,7 @@
     margin-bottom: 17px;
 }
 
-.scrollable-content {
+.mp-scrollable-content {
     height: 100%; /* Fill the container */
     overflow-y: auto; /* Enable vertical scrolling */
     padding: 10px; /* Add padding for inner content */
@@ -22,7 +21,7 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Shadow for aesthetics */
 }
   
-.mainpage-user-profile-card {
+.mp-mainpage-user-profile-card {
     background-color: #f8f8f8;
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -30,15 +29,16 @@
     width: 85%;
     max-width: 400px;
     margin-bottom: 50px;
+    margin-top: 60px;
 }
   
-.mainpage-user-info {
+.mp-mainpage-user-info {
     display: flex;
     align-items: center;
     margin-bottom: 15px;
 }
   
-.mainpage-user-image {
+.mp-mainpage-user-image {
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -46,50 +46,50 @@
     margin-right: 15px;
 }
   
-.mainpage-user-image img {
+.mp-mainpage-user-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
   
-.mainpage-user-details h2 {
+.mp-mainpage-user-details h2 {
     margin: 0;
     font-size: 1.2rem;
 }
   
-.mainpage-user-details p {
+.mp-mainpage-user-details p {
     margin: 5px 0 0;
     font-size: 0.9rem;
     color: #666;
 }
   
-.mainpage-balance-card {
+.mp-mainpage-balance-card {
     background-color: #eff5f7;
     border-radius: 8px;
     padding: 10px;
     text-align: center;
 }
   
-.mainpage-balance-card p {
+.mp-mainpage-balance-card p {
     margin: 0;
     font-size: 0.9rem;
     color: #666;
 }
   
-.mainpage-balance-card h3 {
+.mp-mainpage-balance-card h3 {
     margin: 5px 0 0;
     font-size: 1.5rem;
     color: #0056b3;
 }
   
-.mainpage-button-container {
+.mp-mainpage-button-container {
     display: flex;
     flex-direction: column;
     width: 100%;
     max-width: 400px;
 }
   
-.mainpage-action-button {
+.mp-mainpage-action-button {
     background-color: white;
     color: black;
     padding: 15px 20px;
@@ -101,22 +101,22 @@
     transition: all 0.3s ease;
 }
   
-.mainpage-action-button:hover,
-.mainpage-action-button:active {
+.mp-mainpage-action-button:hover,
+.mp-mainpage-action-button:active {
     background-color: black;
     color: white;
 }
   
-.mainpage-action-button.mainpage-donation,
-.mainpage-action-button.mainpage-voting {
+.mp-mainpage-action-button.mp-mainpage-donation,
+.mp-mainpage-action-button.mp-mainpage-voting {
     background-color: white;
     color: black;
 }
   
-.mainpage-action-button.mainpage-donation:hover,
-.mainpage-action-button.mainpage-donation:active,
-.mainpage-action-button.mainpage-voting:hover,
-.mainpage-action-button.mainpage-voting:active {
+.mp-mainpage-action-button.mp-mainpage-donation:hover,
+.mp-mainpage-action-button.mp-mainpage-donation:active,
+.mp-mainpage-action-button.mp-mainpage-voting:hover,
+.mp-mainpage-action-button.mp-mainpage-voting:active {
     background-color: black;
     color: white;
 }

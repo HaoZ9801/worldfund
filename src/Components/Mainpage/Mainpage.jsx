@@ -11,43 +11,42 @@ const Mainpage = () => {
   };
 
   const handleVotingClick = () => {
-    navigate('/VoteList'); // Navigate to the donation details page
+    navigate('/VoteList'); // Navigate to the voting details page
   };
 
   return (
-    <div className="main-page">
-      <div className="mainpage-container">
-        
-                <div className="scrollable-content">
-        <div className="mainpage-user-profile-card">
-          <div className="mainpage-user-info">
-            <div className="mainpage-user-image">
-              <img src={userimage} alt="User" />
+    <div className="mp-main-page">
+      <div className="mp-mainpage-container">
+        <div className="mp-scrollable-content">
+          <div className="mp-mainpage-user-profile-card">
+            <div className="mp-mainpage-user-info">
+              <div className="mp-mainpage-user-image">
+                <img src={userimage} alt="User" />
+              </div>
+              <div className="mp-mainpage-user-details">
+                <h2>John Doe</h2>
+                <p>WorldID: JD123456</p>
+              </div>
             </div>
-            <div className="mainpage-user-details">
-              <h2>John Doe</h2>
-              <p>WorldID: JD123456</p>
+            <div className="mp-mainpage-balance-card">
+              <p>Balance</p>
+              <h3>100 WLD</h3>
             </div>
           </div>
-          <div className="mainpage-balance-card">
-            <p>Balance</p>
-            <h3>100 WLD</h3>
+          <div className="mp-mainpage-button-container">
+            <button 
+              className="mp-mainpage-action-button mp-mainpage-donation" 
+              onClick={handleDonationClick} // Add onClick event handler
+            >
+              Donation
+            </button>
+            <button className="mp-mainpage-action-button mp-mainpage-voting" onClick={handleVotingClick}>
+              Voting
+            </button>
           </div>
         </div>
-        <div className="mainpage-button-container">
-          <button 
-            className="mainpage-action-button mainpage-donation" 
-            onClick={handleDonationClick} // Add onClick event handler
-          >
-            Donation
-          </button>
-          <button className="mainpage-action-button mainpage-voting" onClick={handleVotingClick}>
-            Voting
-          </button>
-        </div>
       </div>
-      </div>
-      </div>
+    </div>
   );
 };
 
