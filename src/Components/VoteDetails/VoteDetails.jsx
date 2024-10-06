@@ -407,8 +407,6 @@ const contractVotingABI = [
 
 const projectContract = new web3.eth.Contract(contractABI, contractAddress);
 const votingContract = new web3.eth.Contract(contractVotingABI, contractVotingAddress);
-import mercy from "../../assets/mercy.jpg";
-import mercy_logo from "../../assets/mercy-logo.png";
 
 const VoteDetails = () => {
   console.log(ethers);

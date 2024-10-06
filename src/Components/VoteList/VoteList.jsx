@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
 import { useNavigate, useLocation } from "react-router-dom"; // Import useLocation
 import "./VoteList.css";
 import Web3 from "web3";
