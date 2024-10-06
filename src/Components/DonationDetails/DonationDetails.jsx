@@ -1,24 +1,30 @@
 import React, { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import "./DonationDetails.css";
 import back_button from "../../assets/back.png";
 import who from "../../assets/who.jpg";
 import who_logo from "../../assets/who-logo.jpg";
+import useMetaMask from "./MetaMask"; // Import your MetaMask functionality
 
 const DonationDetails = () => {
-  // State to track the selected tab
   const [selectedTab, setSelectedTab] = useState("about");
+  const navigate = useNavigate(); // Initialize navigate
+
+  const handleBackButtonClick = () => {
+    navigate("/DonationList"); // Navigate to /VoteList on click
+  };
 
   // Ref for scrolling to the make-donation section
   const makeDonationRef = useRef(null);
+  const { account, connectMetaMask, transferFunds } = useMetaMask(); // Destructure functions from MetaMask
+  const [donationAmount, setDonationAmount] = useState(""); // State for donation amount
 
-  // Transaction details array
   const transaction = [
     { date: '01/01/2024', details: 'COVID Test Kit', amount: '240.00' },
     { date: '12/02/2024', details: 'Hep B Vaccine', amount: '1302.00' },
     { date: '31/05/2024', details: 'Face Mask', amount: '500.00' },
   ];
 
-  // Function to handle scrolling to the make-donation section
   const handleScrollToDonate = () => {
     makeDonationRef.current.scrollIntoView({ behavior: "smooth" });
   };
@@ -28,7 +34,10 @@ const DonationDetails = () => {
       <div className="details-container">
         <div className="scrollable-content">
           <div className="top-title">
-            <img src={back_button} alt="back" />
+            <img src={back_button} 
+                alt="back" 
+                onClick={handleBackButtonClick} 
+                style={{ cursor: 'pointer' }} />
             <h1>Donation</h1>
           </div>
           <div className="project-pics">
@@ -44,15 +53,13 @@ const DonationDetails = () => {
               <h1>World Health Organization</h1>
             </div>
             <div className="donate-box">
-              <div className="donate-info">
-                <div className="fund-received">
-                  <span className="info-font">Fund Received:</span>
-                  <span>$1200.00</span>
-                </div>
-                <div className="number-of-donors">
-                  <span className="info-font">No. of Donors:</span>
-                  <span>37</span>
-                </div>
+              <div className="fund-received">
+                <span className="info-font">Fund Received:</span>
+                <span>$1200.00</span>
+              </div>
+              <div className="number-of-donors">
+                <span className="info-font">No. of Donors:</span>
+                <span>37</span>
               </div>
               <button className="donate-button" onClick={handleScrollToDonate}>Donate</button>
             </div>
@@ -102,7 +109,9 @@ const DonationDetails = () => {
 
             {/* Make Donation Section */}
             <div className="make-donation" ref={makeDonationRef}>
-              <form className="donation-form">
+              <form className="donation-form" onSubmit={(e) => {
+                e.preventDefault(); // Prevent default form submission
+              }}>
                 {/* Coin dropdown */}
                 <div className="form-group">
                   <label htmlFor="coin">Coin</label>
@@ -146,24 +155,16 @@ const DonationDetails = () => {
                     min="0.01" 
                     step="0.01" 
                     required 
+                    value={donationAmount} // Set the value of the input
+                    onChange={(e) => setDonationAmount(e.target.value)} // Update state on change
                   />
                 </div>
 
                 {/* Donate button */}
                 <button type="submit" className="donate-button" onClick={async () => {
-  if (window.ethereum) {
-    try {
-      const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-      console.log('Connected accounts:', accounts);
-    } catch (error) {
-      console.error('User denied account access or error occurred:', error);
-    }
-  } else {
-    console.error('MetaMask is not installed');
-  }
-}}>
-  Donate
-</button>
+                  await connectMetaMask(); // Connect to MetaMask
+                  await transferFunds(donationAmount); // Transfer funds
+                }}>Donate</button>
               </form>
             </div>
 

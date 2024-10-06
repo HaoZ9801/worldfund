@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate, useLocation } from "react-router-dom"; // Import useLocation
 import "./VoteList.css";
 import Web3 from "web3";
 
@@ -273,6 +274,14 @@ const VoteList = () => {
 
     const [selectedTab, setSelectedTab] = useState("vote");
     const navigate = useNavigate(); // Initialize navigate
+    const location = useLocation(); // Get location to read state
+
+    // Check for state passed from VoteDetails
+    useEffect(() => {
+        if (location.state && location.state.selectedTab) {
+            setSelectedTab(location.state.selectedTab);
+        }
+    }, [location.state]);
 
     const handleVoteItemClick = () => {
         navigate("/VoteDetails"); // Navigate to /VoteDetails
@@ -289,9 +298,7 @@ const VoteList = () => {
             <div className="vote-list-container">
                 <div className="scrollable-content">
                     <div className="vote-list-title">
-                        <h1>
-                            Project Voting
-                        </h1>
+                        <h1>Project Voting</h1>
                     </div>
 
                     <div className="vote-about-bar">
@@ -381,7 +388,7 @@ const VoteList = () => {
                                         <div className="history-date">{item.date}</div>
                                         <div className="history-details">{item.details}</div>
                                     </div>
-                                ))} {/* Close the map function here */}
+                                ))}
                             </div>
                         </div>
                     )}

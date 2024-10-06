@@ -407,6 +407,8 @@ const contractVotingABI = [
 
 const projectContract = new web3.eth.Contract(contractABI, contractAddress);
 const votingContract = new web3.eth.Contract(contractVotingABI, contractVotingAddress);
+import mercy from "../../assets/mercy.jpg";
+import mercy_logo from "../../assets/mercy-logo.png";
 
 const VoteDetails = () => {
   console.log(ethers);
@@ -454,7 +456,6 @@ const VoteDetails = () => {
     console.log(projects)
 
   const [selectedTab, setSelectedTab] = useState("about");
-
   const navigate = useNavigate(); // Initialize navigate
 
   const handleBackButtonClick = () => {
@@ -498,8 +499,10 @@ const VoteDetails = () => {
     } catch (error) {
       console.error("Error casting vote:", error);
     }
+
+    navigate("/VoteList", { state: { selectedTab: "history" } });
   };
-  
+
   return (
     <div className="vote-details">
       <div className="details-container">
@@ -508,18 +511,18 @@ const VoteDetails = () => {
             <img 
                 src={back_button} 
                 alt="back" 
-                onClick={handleBackButtonClick} // Set onClick handler
-                style={{ cursor: 'pointer' }} // Change cursor to pointer
-                />
+                onClick={handleBackButtonClick} 
+                style={{ cursor: 'pointer' }} 
+            />
             <h1>Vote Project</h1>
           </div>
 
           <div className="vote-project-pics">
             <div className="mercy-pics">
-              <img src={mercy} alt="mercy" /> {/* Use the correct image */}
+              <img src={mercy} alt="mercy" />
             </div>
             <div className="mercy-logo">
-              <img src={mercy_logo} alt="mercy logo" /> {/* Use the correct logo */}
+              <img src={mercy_logo} alt="mercy logo" />
             </div>
           </div>
 
@@ -549,29 +552,28 @@ const VoteDetails = () => {
             {selectedTab === "about" && (
               <div className="vote-about-content">
                 <p>
-                MERCY Malaysia is an international non-profit organisation focusing on providing medical relief, sustainable health-related development and risk reduction activities for vulnerable communities, in both crisis and non-crisis situation.
+                MERCY Malaysia is an international non-profit organisation focusing on providing medical relief, sustainable health-related development and risk reduction activities for vulnerable communities, in both crisis and non-crisis situations.
                 </p>
               </div>
             )}
 
             {/* Milestone Content */}
             {selectedTab === "milestone" && (
-            <div className="vote-milestone-content">
+              <div className="vote-milestone-content">
                 <ul>
-                <li>Phase 1 - Emergency Response</li>
-                <li>Phase 2 - Recovery</li>
-                <li>Phase 3 - Prevention/Mitigation</li>
-                <li>Phase 4 - Preparedness</li>
+                  <li>Phase 1 - Emergency Response</li>
+                  <li>Phase 2 - Recovery</li>
+                  <li>Phase 3 - Prevention/Mitigation</li>
+                  <li>Phase 4 - Preparedness</li>
                 </ul>
-            </div>
+              </div>
             )}
-
           </div>
 
           <div className="voting-box">
             <div className="funds">
-                <span>Funds</span>
-                <h2>$356,000</h2>
+              <span>Funds</span>
+              <h2>$356,000</h2>
             </div>
             {loading ? ( // Show loading state while fetching
         <p>Loading...</p>
