@@ -114,6 +114,7 @@
 
 .name {
     font-weight: normal; /* Regular font weight for name */
+    color: #000;
 }
 
 .number {

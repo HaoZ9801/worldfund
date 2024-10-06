@@ -1,11 +1,458 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./VoteDetails.css";
 import back_button from "../../assets/back.png";
-import mercy from "../../assets/mercy.jpg";
-import mercy_logo from "../../assets/mercy-logo.png";
+import mercy from "../../assets/mercy.jpg"; // Correctly import mercy image
+import mercy_logo from "../../assets/mercy-logo.png"; // Correctly import mercy logo
+import Web3 from "web3";
+import {ethers} from 'ethers';
+
+
+const web3 = new Web3('https://sepolia-rpc.scroll.io/')
+const contractAddress = "0x8dAc40e42538B825ac57b0C107CCd3d107664DAC"
+const contractABI = [
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_projectType",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_description",
+				"type": "string"
+			}
+		],
+		"name": "createProject",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "_uniqueHash",
+				"type": "bytes32"
+			}
+		],
+		"name": "incrementVote",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "uniqueHash",
+				"type": "bytes32"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "projectType",
+				"type": "string"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "timestamp",
+				"type": "uint256"
+			}
+		],
+		"name": "ProjectCreated",
+		"type": "event"
+	},
+	{
+		"inputs": [],
+		"name": "getAllProjects",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "projectType",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "description",
+						"type": "string"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "uniqueHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "voteCount",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct ProjectRegistry.Project[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "_uniqueHash",
+				"type": "bytes32"
+			}
+		],
+		"name": "getProject",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "projectType",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "description",
+						"type": "string"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "uniqueHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "voteCount",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct ProjectRegistry.Project",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "_uniqueHash",
+				"type": "bytes32"
+			}
+		],
+		"name": "getProjectVoteCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "projectHashes",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"name": "projects",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "projectType",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "description",
+				"type": "string"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "uniqueHash",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "timestamp",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "voteCount",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
+const contractVotingAddress = "0xc7c099cce495cD7D688b6483c2407A98d57589db"
+const contractVotingABI = [
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "_hashNullifier",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "_projectHash",
+				"type": "bytes32"
+			}
+		],
+		"name": "castVote",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_projectRegistry",
+				"type": "address"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "hashNullifier",
+				"type": "bytes32"
+			},
+			{
+				"indexed": false,
+				"internalType": "bytes32",
+				"name": "projectHash",
+				"type": "bytes32"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "timestamp",
+				"type": "uint256"
+			}
+		],
+		"name": "VoteCasted",
+		"type": "event"
+	},
+	{
+		"inputs": [],
+		"name": "getAllVotes",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "bytes32",
+						"name": "hashNullifier",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "projectHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct VotingSystem.Vote[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "_hashNullifier",
+				"type": "bytes32"
+			}
+		],
+		"name": "getVotesByHash",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "bytes32",
+						"name": "hashNullifier",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "projectHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct VotingSystem.Vote[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "votes",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "hashNullifier",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "projectHash",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "uint256",
+				"name": "timestamp",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
+
+const projectContract = new web3.eth.Contract(contractABI, contractAddress);
+const votingContract = new web3.eth.Contract(contractVotingABI, contractVotingAddress);
 
 const VoteDetails = () => {
+  console.log(ethers);
+
+  const [nullifierHash, setNullifierHash] = useState("");
+
+    useEffect(() => {
+        const fetchFileContent = async () => {
+            try {
+                const response = await fetch("/public/tempStorage/storage.txt"); // Adjust the path if necessary
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const text = await response.text();
+                setNullifierHash(text); // Set the content to state
+            } catch (error) {
+                console.error("Error fetching file:", error);
+            }
+        };
+
+        fetchFileContent();
+    }, []);
+
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true); // Add loading state
+  const [currentAccount, setCurrentAccount] = useState(null);
+
+    useEffect(() => {
+        const fetchProjects = async () => {
+
+            try {
+                // Assuming getProjects returns an array of project objects
+                const projectList = await projectContract.methods.getAllProjects().call();
+                setProjects(projectList);
+            } catch (error) {
+                console.error('Error fetching projects:', error);
+            } finally {
+              setLoading(false);
+            }
+        };
+
+        fetchProjects();
+    }, []);
+
+    console.log(projects)
+
   const [selectedTab, setSelectedTab] = useState("about");
   const navigate = useNavigate(); // Initialize navigate
 
@@ -13,8 +460,45 @@ const VoteDetails = () => {
     navigate("/VoteList"); // Navigate to /VoteList on click
   };
 
-  const handleVoteNowClick = () => {
-    navigate("/VoteList", { state: { selectedTab: "history" } }); // Pass the state to navigate
+  const connectAccount = async () => {
+    if (!window.ethereum) {
+        alert("Please install MetaMask to use this feature.");
+        return null; // Return null if MetaMask is not installed
+    }
+
+    try {
+        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        const account = accounts[0]; // Get the first account
+        setCurrentAccount(account); // Update the state with the connected account
+        console.log("Connected account:", account);
+        return account; // Return the connected account
+    } catch (error) {
+        console.error("Error connecting to MetaMask:", error);
+        return null; // Return null if there is an error
+    }
+};
+
+
+  const handleVote = async () => {
+    const connectedAccount = await connectAccount();
+    if (!nullifierHash || !projects.length || !connectedAccount) {
+      console.error("Missing necessary data for voting.");
+      return;
+    }
+
+    const provider = new ethers.providers.Web3Provider(window.ethereum); // Use ethers.js
+    const signer = provider.getSigner();
+
+    const votingContract = new ethers.Contract(contractVotingAddress, contractVotingABI, signer);
+
+    try {
+      const tx = await votingContract.methods.castVote(nullifierHash, projects[0].uniqueHash).send({ from: connectedAccount });
+      console.log("Vote cast successfully:", tx);
+    } catch (error) {
+      console.error("Error casting vote:", error);
+    }
+
+    navigate("/VoteList", { state: { selectedTab: "history" } });
   };
 
   return (
@@ -89,12 +573,22 @@ const VoteDetails = () => {
               <span>Funds</span>
               <h2>$356,000</h2>
             </div>
-            <div className="supporters">
-              <span>No. of Supporters</span>
-              <h2>8,710</h2>
-            </div>
-            <button className="vote-now-button" onClick={handleVoteNowClick}>Vote</button>
-          </div>
+            {loading ? ( // Show loading state while fetching
+        <p>Loading...</p>
+      ) : (
+        <div className="supporters">
+          <span>No. of Supporters</span>
+          <h2>{projects[0].voteCount.toString()}</h2>
+        </div>
+      )}
+      {loading ? ( // Show loading state while fetching
+        <p>Loading...</p>
+      ) : (
+            <button className="vote-now-button" onClick={handleVote}>Vote</button>
+      )}
+        </div>
+
+
         </div>
       </div>
     </div>

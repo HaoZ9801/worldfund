@@ -1,8 +1,276 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom"; // Import useLocation
 import "./VoteList.css";
+import Web3 from "web3";
+
+const web3 = new Web3('https://sepolia-rpc.scroll.io/')
+const contractAddress = "0x8dAc40e42538B825ac57b0C107CCd3d107664DAC"
+const contractABI = [
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_projectType",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_description",
+				"type": "string"
+			}
+		],
+		"name": "createProject",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "_uniqueHash",
+				"type": "bytes32"
+			}
+		],
+		"name": "incrementVote",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "uniqueHash",
+				"type": "bytes32"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "projectType",
+				"type": "string"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "timestamp",
+				"type": "uint256"
+			}
+		],
+		"name": "ProjectCreated",
+		"type": "event"
+	},
+	{
+		"inputs": [],
+		"name": "getAllProjects",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "projectType",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "description",
+						"type": "string"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "uniqueHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "voteCount",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct ProjectRegistry.Project[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "_uniqueHash",
+				"type": "bytes32"
+			}
+		],
+		"name": "getProject",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "projectType",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "description",
+						"type": "string"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "uniqueHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "voteCount",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct ProjectRegistry.Project",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "_uniqueHash",
+				"type": "bytes32"
+			}
+		],
+		"name": "getProjectVoteCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "projectHashes",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"name": "projects",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "projectType",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "description",
+				"type": "string"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "uniqueHash",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "timestamp",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "voteCount",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
+
+const projectContract = new web3.eth.Contract(contractABI, contractAddress);
 
 const VoteList = () => {
+
+    const [projects, setProjects] = useState([]);
+
+    useEffect(() => {
+        const fetchProjects = async () => {
+
+            try {
+                // Assuming getProjects returns an array of project objects
+                const projectList = await projectContract.methods.getAllProjects().call();
+                setProjects(projectList);
+            } catch (error) {
+                console.error('Error fetching projects:', error);
+            }
+        };
+
+        fetchProjects();
+    }, []);
+
+    console.log(projects)
+
     const [selectedTab, setSelectedTab] = useState("vote");
     const navigate = useNavigate(); // Initialize navigate
     const location = useLocation(); // Get location to read state
@@ -52,7 +320,21 @@ const VoteList = () => {
                     {selectedTab === "vote" && (
                         <div className="vote-about-content">
                             <ul>
-                                <li className="vote-item1" onClick={handleVoteItemClick} style={{ cursor: 'pointer' }}>
+                            {projects.map((project, index) => (
+                <li
+                    key={project.uniqueHash} // Use uniqueHash as a key for each project
+                    className={`vote-item ${index === 0 ? 'vote-item1' : ''}`} // Add custom class for the first item
+                    onClick={handleVoteItemClick}
+                    style={{ cursor: 'pointer' }}
+                >
+                    <span className={`rank ${index === 0 ? 'rank1' : ''}`}>{index + 1}</span>
+                    <div className={`vote-box ${index === 0 ? 'vote-box1' : ''}`}>
+                        <span className={`name ${index === 0 ? 'name1' : ''}`}>{project.projectType}</span>
+                        <span className={`number ${index === 0 ? 'number1' : ''}`}>{project.voteCount.toString()}</span>
+                    </div>
+                </li>
+            ))}
+                                {/* <li className="vote-item1" onClick={handleVoteItemClick} style={{ cursor: 'pointer' }}>
                                     <span className="rank1">1</span>
                                     <div className="vote-box1">
                                         <span className="name1">Mercy Malaysia</span>
@@ -62,7 +344,7 @@ const VoteList = () => {
                                 <li className="vote-item">
                                     <span className="rank">2</span>
                                     <div className="vote-box">
-                                        <span className="name">SUKA Society</span>
+                                        <span className="name">Klang Ecoworld</span>
                                         <span className="number">1,594</span>
                                     </div>
                                 </li>
@@ -86,7 +368,7 @@ const VoteList = () => {
                                         <span className="name">Hati.my</span>
                                         <span className="number">92</span>
                                     </div>
-                                </li>
+                                </li> */}
                             </ul>
                         </div>
                     )}
